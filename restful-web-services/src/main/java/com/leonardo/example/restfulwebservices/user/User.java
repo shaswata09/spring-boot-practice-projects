@@ -1,7 +1,13 @@
 package com.leonardo.example.restfulwebservices.user;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+
 import java.util.Date;
 
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class User {
     private Integer id;
     private String name;
