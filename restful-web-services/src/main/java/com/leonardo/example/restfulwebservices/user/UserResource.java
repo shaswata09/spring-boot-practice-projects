@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -14,12 +15,12 @@ public class UserResource {
     private UserDaoService service;
 
     @GetMapping(path = "/users")
-    public List<User> retriveAllUsers() {
+    public List<User> retrieveAllUsers() {
         return service.findAll();
     }
 
     @GetMapping(path = "/users/{id}")
-    public User retriveUser(@PathVariable int id) {
+    public User retrieveUser(@PathVariable int id) {
         User user = service.findOne(id);
         if (null == user)
             throw new UserNotFoundException("id-" + id);
@@ -27,7 +28,7 @@ public class UserResource {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity<Object> createUser(@RequestBody User user) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
         User newUser = service.saveUser(user);
         URI path = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(newUser.getId()).toUri();

@@ -1,16 +1,19 @@
 package com.leonardo.example.restfulwebservices.user;
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
-@Repository
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class User {
     private Integer id;
+
+    @NotNull(message = "Name should not be null")
+    @Size(min=2, message = "Name should have atleast 2 characters")
     private String name;
+
+    @NotNull(message = "DOB should not be null")
+    @Past(message = "DOB should be in past")
     private Date date;
 
     public User(Integer id, String name, Date date) {
