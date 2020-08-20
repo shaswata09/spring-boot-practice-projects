@@ -9,7 +9,7 @@ public class User {
     private Integer id;
 
     @NotNull(message = "Name should not be null")
-    @Size(min=2, message = "Name should have atleast 2 characters")
+    @Size(min=2, message = "Name should have at least 2 characters")
     private String name;
 
     @NotNull(message = "DOB should not be null")

@@ -1,6 +1,9 @@
 package com.leonardo.example.restfulwebservices.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -8,6 +11,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class UserResource {
@@ -20,11 +25,16 @@ public class UserResource {
     }
 
     @GetMapping(path = "/users/{id}")
-    public User retrieveUser(@PathVariable int id) {
+    public EntityModel<User> retrieveUser(@PathVariable int id) {
         User user = service.findOne(id);
         if (null == user)
             throw new UserNotFoundException("id-" + id);
-        return user;
+
+        EntityModel<User> entityModel = EntityModel.of(user);
+        Link link= WebMvcLinkBuilder.linkTo(
+                methodOn(this.getClass()).retrieveAllUsers()).withRel("all-users");
+        entityModel.add(link);
+        return entityModel;
     }
 
     @PostMapping(path = "/users")
