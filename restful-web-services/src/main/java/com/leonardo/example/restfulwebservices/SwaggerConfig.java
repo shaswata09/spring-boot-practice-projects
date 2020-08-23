@@ -31,9 +31,9 @@ public class SwaggerConfig {
                     "urn:tos",
                     DEFAULT_CONTACT,
                     "Apache 2.0",
-                    "http://www.apache.org/licenses/LICENSE-2.0", new ArrayList());
+                    "http://www.apache.org/licenses/LICENSE-2.0", new ArrayList<>());
 
-    public static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(
+    public static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<>(
             Arrays.asList("application/json", "application/xml"));
 
     @Bean
