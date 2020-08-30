@@ -3,13 +3,19 @@ package com.leonardo.example.restfulwebservices.user;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @ApiModel(description = "User Model description")
+@Entity
 public class User {
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @ApiModelProperty(notes = "Name sould be at least 2 chars")
