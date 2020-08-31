@@ -6,10 +6,12 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @ApiModel(description = "User Model description")
 @Entity
@@ -20,7 +22,7 @@ public class User {
 
     @ApiModelProperty(notes = "Name sould be at least 2 chars")
     @NotNull(message = "Name should not be null")
-    @Size(min=2, message = "Name should have at least 2 characters")
+    @Size(min = 2, message = "Name should have at least 2 characters")
     private String name;
 
     @ApiModelProperty(notes = "DOB should be in past")
@@ -28,13 +30,17 @@ public class User {
     @Past(message = "DOB should be in past")
     private Date date;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
     public User(Integer id, String name, Date date) {
         this.id = id;
         this.name = name;
         this.date = date;
     }
 
-    public User() {}
+    public User() {
+    }
 
     public Integer getId() {
         return id;
@@ -58,6 +64,14 @@ public class User {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
