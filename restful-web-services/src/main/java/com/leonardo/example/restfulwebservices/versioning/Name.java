@@ -1,24 +1,24 @@
 package com.leonardo.example.restfulwebservices.versioning;
 
 public class Name {
-    private String firtsName;
+    private String firstName;
     private String lastName;
 
     public Name() {
         super();
     }
 
-    public Name(String firtsName, String lastName) {
-        this.firtsName = firtsName;
+    public Name(String firstName, String lastName) {
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getFirtsName() {
-        return firtsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirtsName(String firtsName) {
-        this.firtsName = firtsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
