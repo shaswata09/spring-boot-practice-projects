@@ -1,6 +1,7 @@
 package com.springboot.lil.learningspring.business.service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +57,15 @@ public class ReservationService {
 		for (Long id : roomReservationMap.keySet()) {
 			roomReservations.add(roomReservationMap.get(id));
 		}
+		roomReservations.sort(new Comparator<RoomReservation>() {
+			@Override
+			public int compare(RoomReservation r1, RoomReservation r2) {
+				if (r1.getRoomName() == r2.getRoomName()) {
+					return r1.getRoomNumber().compareTo(r2.getRoomNumber());
+				}
+				return r1.getRoomName().compareTo(r2.getRoomName());
+			}
+		});
 		return roomReservations;
 	}
 }
