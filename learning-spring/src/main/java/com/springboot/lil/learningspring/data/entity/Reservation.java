@@ -1,5 +1,7 @@
 package com.springboot.lil.learningspring.data.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,5 +35,5 @@ public class Reservation {
 	@Column(name = "RES_DATE")
 	@Getter
 	@Setter
-	private String resDate;
+	private Date resDate;
 }
