@@ -8,7 +8,7 @@ import lombok.Setter;
 public class RoomReservation {
 	@Getter
 	@Setter
-	private long roomID;
+	private long roomId;
 	@Getter
 	@Setter
 	private long guestId;

@@ -38,7 +38,7 @@ public class ReservationService {
 		Map<Long, RoomReservation> roomReservationMap = new HashMap<Long, RoomReservation>();
 		rooms.forEach(room -> {
 			RoomReservation roomReservation = new RoomReservation();
-			roomReservation.setRoomID(room.getRoomId());
+			roomReservation.setRoomId(room.getRoomId());
 			roomReservation.setRoomName(room.getRoomName());
 			roomReservation.setRoomNumber(room.getRoomNumber());
 			roomReservationMap.put(room.getRoomId(), roomReservation);
